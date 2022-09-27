@@ -63,17 +63,28 @@ void solve() {
         for(ll i = 0;i < n;i++){
             q2.push(arr2[i]);
         }
+        ll op = 0;
         while(!q1.empty() && !q2.empty()){
             ll val1 = q1.top();
             ll val2 = q2.top();
             if(val1 == val2){
-                q1.empty();
-                q2.empty();
+                q1.pop();
+                q2.pop();
             }
-            else if(q1.empty() > q2.empty()){
-                ll 
+            else if(val1 > val2){
+                q1.pop();
+                ll temp = cntDigits(val1);
+                q1.push(temp);
+                op++;
+            }
+            else if(val1 < val2){
+                q2.pop();
+                ll temp = cntDigits(val2);
+                q2.push(temp);
+                op++;
             }
         }
+        cout << op << endl;
 
     }
 
