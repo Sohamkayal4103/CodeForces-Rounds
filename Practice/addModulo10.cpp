@@ -33,48 +33,53 @@ mt19937 RNG(chrono::steady_clock::now().time_since_epoch().count());
 // Use mt19937_64 for 64 bit random numbers.
 
 bool solve() {
-    // Add your solution here
     ll n;
     cin >> n;
-    vector<ll>arr1(n),arr2(n);
+    vector<ll>arr(n);
     for(ll i = 0;i < n;i++){
-        cin >> arr1[i];
+        cin >> arr[i];
     }
-    for(ll i = 0;i < n;i++){
-        cin >> arr2[i];
-    }
-    // for(auto it : arr1){
-    //     cout << it << " ";
-    // }
-    // cout << endl;
-    // for(auto it : arr2){
-    //     cout << it << " ";
-    // }
-    // cout << endl;
+    ll signal = 0;
     
+    
+    priority_queue<ll,vector<ll>,greater<ll>>q;
     for(ll i = 0;i < n;i++){
-        if(arr1[i] > arr2[i]){
-            // cout << "Returned false " << endl;
-            return false;
+        if(arr[i] % 2 == 1){
+            ll temp = arr[i] % 10;
+            arr[i] += temp;
         }
-        else{
-            // cout << arr1[i] <<" < " << arr2[i] << endl;
-        }
+        q.push(arr[i]);
     }
     for(ll i = 0;i < n;i++){
-        if(arr1[i] != arr2[i]){
-            if(i != n-1){
-                if(arr2[i] > arr2[i+1]+1){
-                    return false;
-                }
-            }
-            else{
-                if(arr2[i] > arr2[0]+1){
-                    return false;
-                }
+        if(arr[i] % 10 == 0){
+            signal = 1;
+        }
+    }
+    if(signal == 1){
+        for(ll i = 1;i < n;i++){
+            if(arr[i] != arr[0]){
+                return false;
             }
         }
-    }  
+        return true;
+    }
+    while(!q.empty()){
+        ll temp = q.top();
+        q.pop();
+        if(!q.empty()){
+            ll diff = q.top() - temp;
+            ll val1 = diff/20;
+            temp += (val1 * 20);
+            // cout << temp << endl;
+            while(temp < q.top()){
+                temp += (temp % 10);
+                // cout << "temp is: " << temp << endl;
+            }
+            if(temp != q.top()){
+                return false;
+            }
+        }
+    }
     return true;
 }
 
@@ -85,10 +90,10 @@ int main() {
     cin >> t;
     while(t--){
         if(solve()){
-            cout << "YES" << endl;
+            cout << "Yes" << endl;
         }
         else{
-            cout << "NO" << endl;
+            cout << "No" << endl;
         }
     }
 }
