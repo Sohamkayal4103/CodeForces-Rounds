@@ -37,9 +37,20 @@ void solve() {
     ll t;
     cin >> t;
     while(t--){
-        cout << "Hello World! " << endl;
-        ll res = 10 ^ 2 ^ 5 ^ 0;
-        cout << res << endl;
+        ll n;
+        cin >> n;
+        vector<ll>arr(n);
+        for(ll i = 0;i < n;i++){
+            cin >> arr[i];
+        }
+        sort(arr.begin(),arr.end());
+        ll ans = n/2;
+        for(ll i = 1;i < n;i++){
+            if(arr[i] != arr[i-1]){
+                ans = max(ans,(i)*(n-(i)));
+            }
+        }
+        cout << ans << endl;
     }
 
 }

@@ -37,9 +37,25 @@ void solve() {
     ll t;
     cin >> t;
     while(t--){
-        cout << "Hello World! " << endl;
-        ll res = 10 ^ 2 ^ 5 ^ 0;
-        cout << res << endl;
+        ll n,op,q;
+        cin >> n >> op >> q;
+        string s;
+        cin >> s;
+        for(ll i = 0;i < op;i++){
+            ll l,r;
+            cin >> l >> r;
+            string s1 = s.substr(l-1,r-l+1);
+            s.append(s1);
+        }
+        vector<ll>arr;
+        for(ll i = 0;i < q;i++){
+            cin >> arr[i];
+        }
+        sort(arr.begin(),arr.end());
+        ll p1 = 0;
+        vector<char>ans;
+        
+
     }
 
 }
