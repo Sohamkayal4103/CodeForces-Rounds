@@ -1,0 +1,1 @@
+{"name":"Local: problemA","url":"d:\\CodeForces-Rounds\\Neubius Round\\problemA.cpp","tests":[{"id":1678632524184,"input":"5\n-4 1\n4 4\n0 -6\n-5 -4\n7 -8\n","output":"7\n8\n11\n9\n15\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CodeForces-Rounds\\Neubius Round\\problemA.cpp","group":"local","local":true}
